@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pekZkYgpnvyK/9K5HS2w+U1vsKs1XniNJNLkcGcpUjiSxC95rF7NEceB+k467TL4snN4NUTnTVtVG9sVLIqCsQ==",
+  "dgSpecHash": "ISMUiUDziiSOLeLbZRitpiXTGczVawxEZXQzqusEg7eC6AIH57CtFOIsRwUiilQd2Kwm+rjjgYqtlII/nkz43w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\source\\repos\\WeatherAppAndroid\\WeatherAppAndroid\\WeatherAppAndroid.csproj",
+  "projectFilePath": "C:\\Users\\User\\Documents\\GitHub\\Weather-App-Android-\\WeatherAppAndroid\\WeatherAppAndroid.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

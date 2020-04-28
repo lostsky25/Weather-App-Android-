@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\WeatherAppAndroid\\WeatherAppAndroid\\WeatherAppAndroid.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\Weather-App-Android-\\WeatherAppAndroid\\WeatherAppAndroid.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\WeatherAppAndroid\\WeatherAppAndroid\\WeatherAppAndroid.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\Weather-App-Android-\\WeatherAppAndroid\\WeatherAppAndroid.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\WeatherAppAndroid\\WeatherAppAndroid\\WeatherAppAndroid.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\Weather-App-Android-\\WeatherAppAndroid\\WeatherAppAndroid.csproj",
         "projectName": "WeatherAppAndroid",
-        "projectPath": "C:\\Users\\User\\source\\repos\\WeatherAppAndroid\\WeatherAppAndroid\\WeatherAppAndroid.csproj",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\Weather-App-Android-\\WeatherAppAndroid\\WeatherAppAndroid.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\WeatherAppAndroid\\WeatherAppAndroid\\obj\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\Weather-App-Android-\\WeatherAppAndroid\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -51,6 +51,10 @@
               "version": "[28.0.0.3, )"
             },
             "Xamarin.Android.Support.Design": {
+              "target": "Package",
+              "version": "[28.0.0.3, )"
+            },
+            "Xamarin.Android.Support.v7.AppCompat": {
               "target": "Package",
               "version": "[28.0.0.3, )"
             },

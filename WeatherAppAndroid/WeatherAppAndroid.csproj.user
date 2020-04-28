@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SelectedDevice>Samsung SM-A307FN</SelectedDevice>
     <DefaultDevice>phone_l-dpi_3_3in_pie_9_0_-_api_28</DefaultDevice>
-    <AndroidDesignerPreferredTheme>Theme.AppCompat.NoActionBar</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.DeviceDefault</AndroidDesignerPreferredTheme>
     <AndroidDesignerPreferredDevice>Nexus 6P</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>

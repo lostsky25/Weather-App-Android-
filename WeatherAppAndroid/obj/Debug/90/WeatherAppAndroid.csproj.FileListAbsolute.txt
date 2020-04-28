@@ -568,3 +568,7 @@ C:\Users\User\Documents\GitHub\Weather-App-Android-\WeatherAppAndroid\obj\Debug\
 C:\Users\User\Documents\GitHub\Weather-App-Android-\WeatherAppAndroid\obj\Debug\90\flata\346AC8D41B9E8629.flata
 C:\Users\User\Documents\GitHub\Weather-App-Android-\WeatherAppAndroid\obj\Debug\90\flata\D877E3CC48F90808.flata
 C:\Users\User\Documents\GitHub\Weather-App-Android-\WeatherAppAndroid\obj\Debug\90\flata\63673AC439FDAA24.flata
+C:\Users\User\Documents\GitHub\Weather-App-Android-\WeatherAppAndroid\obj\Debug\90\res\menu\action_menu.xml
+C:\Users\User\Documents\GitHub\Weather-App-Android-\WeatherAppAndroid\obj\Debug\90\res\drawable\icon_location.png
+C:\Users\User\Documents\GitHub\Weather-App-Android-\WeatherAppAndroid\obj\Debug\90\res\drawable\icon_home.png
+C:\Users\User\Documents\GitHub\Weather-App-Android-\WeatherAppAndroid\obj\Debug\90\res\drawable\icon_settings.png

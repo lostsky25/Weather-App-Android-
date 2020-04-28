@@ -1,17 +1,24 @@
 ﻿using Android.App;
 using Android.OS;
+using Android.Views;
 using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Widget;
 using WeatherApp.Weather;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using System.Linq.Expressions;
+using Android.Support.V4.Widget;
+using Android.Support.Design.Widget;
 
 namespace WeatherAppAndroid
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppCompat.Light.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
         public SupportToolbar mToolbar;
+
+        DrawerLayout drawerLayout;
+        NavigationView navigationView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,22 +28,39 @@ namespace WeatherAppAndroid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            //WeatherGet weather = new WeatherGet();
-            //var currentWeatherImage = FindViewById<ImageView>(Resource.Id.weatherImage);
-            mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(mToolbar);
-            //var town = FindViewById<TextView>(Resource.Id.town);
-            //var weatherType = FindViewById<TextView>(Resource.Id.weatherType);
-            //var temperature = FindViewById<TextView>(Resource.Id.temperature);
+            WeatherGet weather = new WeatherGet();
+            var currentWeatherImage = FindViewById<ImageView>(Resource.Id.weatherImage);
+            
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
-            //currentWeatherImage.SetImageResource(Resource.Drawable.clouds);
+            var town = FindViewById<TextView>(Resource.Id.town);
+            var weatherType = FindViewById<TextView>(Resource.Id.weatherType);
+            var temperature = FindViewById<TextView>(Resource.Id.temperature);
 
-            //town.Text = weather.weatherTemplate.town;
-            //weatherType.Text = weather.weatherTemplate.weather[0].main;
-            //temperature.Text = weather.ConvertToCelsius(weather.weatherTemplate.mainInfo.temperature) + '°';
+            currentWeatherImage.SetImageResource(Resource.Drawable.clouds);
 
-            //Monday.Text = weather.weatherTemplate.weather[0].description;
+            town.Text = weather.weatherTemplate.town;
+            weatherType.Text = weather.weatherTemplate.weather[0].main;
+            temperature.Text = weather.ConvertToCelsius(weather.weatherTemplate.mainInfo.temperature) + '°';
+            
+            navigationView.NavigationItemSelected += OnNavigationItemSelected;
         }
+
+        private void OnNavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            switch (e.MenuItem.ItemId)
+            {
+                case (Resource.Id.home):
+                    e.MenuItem.SetCheckable(true);
+                    Toast.MakeText(this, "Home selected", ToastLength.Short).Show();
+
+                    break;
+            }
+
+            drawerLayout.CloseDrawers();
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

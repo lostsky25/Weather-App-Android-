@@ -9,37 +9,7 @@
   <item android:id="@+id/settings"
          android:showAsAction="always"
          android:icon="@drawable/icon_settings"
-         android:title="Help"
-         myapp:showAsAction="always"/>
-  
-  <item android:id="@+id/action_refresh"
-         android:showAsAction="always"
-        android:title="Refresh"
-         myapp:showAsAction="always"/>
-  
-  <item android:id="@+id/action_help"
-         android:showAsAction="always"
-        android:title="Help"
-         myapp:showAsAction="always"/>
-  
-  <item android:id="@+id/action_refresh"
-         android:showAsAction="always"
-        android:title="Refresh"
-         myapp:showAsAction="always"/>
-  
-  <item android:id="@+id/action_help"
-         android:showAsAction="always"
-        android:title="Help"
-         myapp:showAsAction="always"/>
-  
-  <item android:id="@+id/action_refresh"
-         android:showAsAction="always"
-        android:title="Refresh"
-         myapp:showAsAction="always"/>
-  
-  <item android:id="@+id/action_help"
-         android:showAsAction="always"
-        android:title="Help"
+         android:title="Settings"
          myapp:showAsAction="always"/>
 </menu>
 

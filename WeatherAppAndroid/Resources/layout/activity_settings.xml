@@ -99,24 +99,7 @@
                     android:text="Off" />
             </RadioGroup>
         </LinearLayout>
-        <!--
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <RadioGroup
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical">
-                  <RadioButton android:id="@+id/radio_red"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="Red" />
-                  <RadioButton android:id="@+id/radio_blue"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="Blue" />
-                </RadioGroup>
-            </LinearLayout>-->
+
 
         <android.support.design.widget.NavigationView
             android:layout_width="wrap_content"

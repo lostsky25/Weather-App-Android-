@@ -68,5 +68,25 @@ namespace WeatherApp.Weather
         {
             return Convert.ToInt32((Double.Parse(kelvin.Replace(".", ",")) - 273.15) * 9/5 + 32).ToString();
         }
+
+        public string ConvertKelvinToCelsius(string fahrenheit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ConvertKelvinToFahrenheit(string celsius)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ConvertCelsiusToFahrenheit(string celsius)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ConvertFahrenheitToCelsius(string celsius)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

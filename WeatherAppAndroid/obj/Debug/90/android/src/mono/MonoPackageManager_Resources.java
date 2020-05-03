@@ -3,6 +3,7 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "WeatherAppAndroid.dll" comes first in this list. */
 		"WeatherAppAndroid.dll",
+		"HtmlAgilityPack.dll",
 		"Newtonsoft.Json.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Core.Runtime.dll",

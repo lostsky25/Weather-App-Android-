@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Runtime;
@@ -10,6 +11,7 @@ using System.Linq.Expressions;
 using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
 using Android.Content;
+using WeatherDifferentSource.WeatherAPI;
 
 namespace WeatherAppAndroid
 {
@@ -24,7 +26,36 @@ namespace WeatherAppAndroid
         private TextView weatherPressure;
         private TextView weatherHumidity;
         private TextView windSpeed;
-        private Weather weather;
+
+        //Second section (additional)
+        private TextView[] temperature_section;
+        private TextView[] date_section;
+        //private TextView first_temperature_section;
+        //private TextView second_temperature_section;
+        //private TextView third_temperature_section;
+        //private TextView fourth_temperature_section;
+        //private TextView fifth_temperature_section;
+        //private TextView sixth_temperature_section;
+        //private TextView seventh_temperature_section;
+        //private TextView eight_temperature_section;
+        //private TextView ninth_temperature_section;
+        //private TextView tenth_temperature_section;
+
+
+        private ImageView[] weather_image;
+        //private ImageView first_weather_image;
+        //private ImageView second_weather_image;
+        //private ImageView third_weather_image;
+        //private ImageView fourth_weather_image;
+        //private ImageView fifth_weather_image;
+        //private ImageView sixth_weather_image;
+        //private ImageView seventh_weather_image;
+        //private ImageView eight_weather_image;
+        //private ImageView ninth_weather_image;
+        //private ImageView tenth_weather_image;
+
+        //private Weather weather;
+        private WeatherAPI weatherAPI;
         private TextView town;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -35,11 +66,65 @@ namespace WeatherAppAndroid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            weather = new Weather();
+            weatherAPI = new WeatherAPI("gismetio", "https://www.gismeteo.com/weather-moscow-4368/10-days/");
+            //weather = new Weather();
+
+
+
+            UpdateWeatherAdditionalItems();
             UpdateWeatherMainItems();
 
             navigationView.NavigationItemSelected += OnNavigationItemSelected;
-        
+        }
+
+        private void UpdateWeatherAdditionalItems()
+        {
+            //TextViews
+            date_section = new TextView[10];
+
+            date_section[0] = FindViewById<TextView>(Resource.Id.first_date_section);
+            date_section[1] = FindViewById<TextView>(Resource.Id.second_date_section);
+            date_section[2] = FindViewById<TextView>(Resource.Id.third_date_section);
+            date_section[3] = FindViewById<TextView>(Resource.Id.fourth_date_section);
+            date_section[4] = FindViewById<TextView>(Resource.Id.fifth_date_section);
+            date_section[5] = FindViewById<TextView>(Resource.Id.sixth_date_section);
+            date_section[6] = FindViewById<TextView>(Resource.Id.seventh_date_section);
+            date_section[7] = FindViewById<TextView>(Resource.Id.eight_date_section);
+            date_section[8] = FindViewById<TextView>(Resource.Id.ninth_date_section);
+            date_section[9] = FindViewById<TextView>(Resource.Id.tenth_date_section);
+
+            temperature_section = new TextView[10];
+
+            //TextViews
+            temperature_section[0] = FindViewById<TextView>(Resource.Id.first_temperature_section);
+            temperature_section[1] = FindViewById<TextView>(Resource.Id.second_temperature_section);
+            temperature_section[2] = FindViewById<TextView>(Resource.Id.third_temperature_section);
+            temperature_section[3] = FindViewById<TextView>(Resource.Id.fourth_temperature_section);
+            temperature_section[4] = FindViewById<TextView>(Resource.Id.fifth_temperature_section);
+            temperature_section[5] = FindViewById<TextView>(Resource.Id.sixth_temperature_section);
+            temperature_section[6] = FindViewById<TextView>(Resource.Id.seventh_temperature_section);
+            temperature_section[7] = FindViewById<TextView>(Resource.Id.eight_temperature_section);
+            temperature_section[8] = FindViewById<TextView>(Resource.Id.ninth_temperature_section);
+            temperature_section[9] = FindViewById<TextView>(Resource.Id.tenth_temperature_section);
+
+            for (int i = 0;  i < 10; i++)
+            {
+                temperature_section[i].Text = weatherAPI.GetMaxTemperatureTenDays()[i] + "°";
+            }
+
+            //ImageViews
+            weather_image = new ImageView[10];
+
+            weather_image[0] = FindViewById<ImageView>(Resource.Id.first_weather_image);
+            weather_image[1] = FindViewById<ImageView>(Resource.Id.second_weather_image);
+            weather_image[2] = FindViewById<ImageView>(Resource.Id.third_weather_image);
+            weather_image[3] = FindViewById<ImageView>(Resource.Id.fourth_weather_image);
+            weather_image[4] = FindViewById<ImageView>(Resource.Id.fifth_weather_image);
+            weather_image[5] = FindViewById<ImageView>(Resource.Id.sixth_weather_image);
+            weather_image[6] = FindViewById<ImageView>(Resource.Id.seventh_weather_image);
+            weather_image[7] = FindViewById<ImageView>(Resource.Id.eight_weather_image);
+            weather_image[8] = FindViewById<ImageView>(Resource.Id.ninth_weather_image);
+            weather_image[9] = FindViewById<ImageView>(Resource.Id.tenth_weather_image);
         }
 
         private void UpdateWeatherMainItems()
@@ -58,41 +143,75 @@ namespace WeatherAppAndroid
 
             currentWeatherImage.SetImageResource(Resource.Drawable.clouds);
 
-            town.Text = weather.weatherTemplate.town;
-            weatherType.Text += weather.weatherTemplate.weather[0].main;
+            town.Text = weatherAPI.GetTown();
+            weatherType.Text += weatherAPI.GetWeatherType()[0];
 
-            weatherPressure.Text += weather.weatherTemplate.mainInfo.pressure.Substring(0,
-                weather.weatherTemplate.mainInfo.pressure.LastIndexOf('.')) + " mm.Hg";
-            weatherHumidity.Text += weather.weatherTemplate.mainInfo.humidity + " %";
+            weatherPressure.Text += weatherAPI.GetPressure()[0] + " mm.Hg";
+            weatherHumidity.Text += weatherAPI.GetHumidity()[0] + " %";
 
             switch (UserData.UserData.temperatureFormat)
             {
                 case "C°":
-                    temperature.Text = weather.ConvertToCelsius(weather.weatherTemplate.mainInfo.temperature) + " C°";
+                    temperature.Text = weatherAPI.GetMaxTemperatureTenDays()[0] + " C°";
                     break;
                 case "F°":
-                    temperature.Text = weather.ConvertToFahrenheit(weather.weatherTemplate.mainInfo.temperature) + " F°";
+                    temperature.Text = weatherAPI.ConvertCelsiusToFahrenheit(weatherAPI.GetMaxTemperatureTenDays()[0]) + " F°";
                     break;
                 default:
-                    temperature.Text = weather.ConvertToCelsius(weather.weatherTemplate.mainInfo.temperature) + " C°";
+                    temperature.Text = weatherAPI.GetMaxTemperatureTenDays()[0] + " C°";
                     break;
             }
 
             switch (UserData.UserData.windSpeedFormat)
             {
                 case "m/s":
-                    windSpeed.Text += weather.weatherTemplate.wind.speed.Substring(0,
-                    weather.weatherTemplate.wind.speed.LastIndexOf('.')) + " m/s"; 
+                    windSpeed.Text += weatherAPI.GetWindSpeed()[0] + " m/s";
                     break;
                 case "km/h":
-                    windSpeed.Text += weather.ConvertToKilometersPerHour(weather.weatherTemplate.wind.speed.Substring(0,
-                    weather.weatherTemplate.wind.speed.LastIndexOf('.'))) + " km/h";
+                    windSpeed.Text += weatherAPI.ConvertToKilometersPerHour(weatherAPI.GetWindSpeed()[0]) + " km/h";
                     break;
                 default:
-                    windSpeed.Text += weather.weatherTemplate.wind.speed.Substring(0,
-                    weather.weatherTemplate.wind.speed.LastIndexOf('.')) + " m/s";
+                    windSpeed.Text += weatherAPI.GetWindSpeed()[0] + " m/s";
                     break;
             }
+            
+            for (int i = 0; i < 10; i++)
+            {
+                switch (weatherAPI.GetIconInfo(i))
+                {
+                    case "clouds_grey":
+                        weather_image[i].SetImageResource(Resource.Drawable.clouds_grey);
+                        break;
+                    case "rain_grey":
+                        weather_image[i].SetImageResource(Resource.Drawable.rain_grey);
+                        break;
+                    case "snow_grey":
+                        weather_image[i].SetImageResource(Resource.Drawable.snow_grey);
+                        break;
+                    case "storm_grey":
+                        weather_image[i].SetImageResource(Resource.Drawable.storm_grey);
+                        break;
+                    case "sun_grey":
+                        weather_image[i].SetImageResource(Resource.Drawable.sun_grey);
+                        break;
+                    default:
+                        weather_image[i].SetImageResource(Resource.Drawable.sun_grey);
+                        break;
+                }
+            }
+
+            int day = DateTime.Now.Day;
+            for (int i = 0; i < 10; i++)
+            {
+                date_section[i].Text = day.ToString() + "th";
+             
+                if (day < DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month))
+                    day++;
+                else
+                    day = 1;
+            }
+
+
         }
 
         public void OnNavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)

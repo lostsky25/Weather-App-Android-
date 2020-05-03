@@ -14,7 +14,9 @@ namespace WeatherApp.Weather
 {
     interface TemperatureConverter
     {
-        public string ConvertToCelsius(string fahrenheit);
-        public string ConvertToFahrenheit(string celsius);
+        public string ConvertKelvinToCelsius(string fahrenheit);
+        public string ConvertKelvinToFahrenheit(string celsius);
+        public string ConvertCelsiusToFahrenheit(string celsius);
+        public string ConvertFahrenheitToCelsius(string celsius);
     }
 }
